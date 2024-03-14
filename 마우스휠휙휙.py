@@ -1,3 +1,4 @@
+#마우스 휙휙 물어본거
 import streamlit as st
 import pandas as pd
 
@@ -26,3 +27,4 @@ else:  # 최근 상품순
 
 # 정렬된 데이터 출력
 st.table(sorted_df)
+
