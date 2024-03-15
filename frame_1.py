@@ -8,7 +8,7 @@ def csv_to_dict(csv_file_path):
             data.append(row)
     return data
 
-csv_file_path = '123.csv'
+csv_file_path = '543.csv'
 sales_data_dict = csv_to_dict(csv_file_path)
 
 # 결과 출력
@@ -17,4 +17,4 @@ sales_data_dict = csv_to_dict(csv_file_path)
 
 
 
-print(sales_data_dict[0]['상품명'])
+print(sales_data_dict)

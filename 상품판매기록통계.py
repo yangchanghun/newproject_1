@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sized_item
 import season_item
-
+import total_income
 # CSV 파일을 딕셔너리 리스트로 변환하는 함수
 def csv_to_dict(csv_file_path):
     data = []
@@ -24,7 +24,7 @@ def main():
     if uploaded_file is not None:
         # 업로드한 CSV 파일을 데이터프레임으로 변환
         df = pd.read_csv(uploaded_file)
-        options = ['판매순', '사이즈별 인기순', '계절별 인기순']
+        options = ['판매순', '사이즈별 인기순', '계절별 인기순','총 수입']
         selected_option = st.selectbox("정렬 기준 선택:", options)
 
         if selected_option == '판매순':
@@ -32,7 +32,10 @@ def main():
         elif selected_option == '사이즈별 인기순':
             sized_item.sized(df)
         elif selected_option =='계절별 인기순':
-            season_item.seasons_items()
+            season_item.seasons_items(df)
+        elif selected_option =='총 수입':
+            total_income.totals_incomes(df)
+
 
 if __name__ == "__main__":
     main()
