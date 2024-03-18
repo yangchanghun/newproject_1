@@ -1,9 +1,7 @@
-import csv
-from collections import defaultdict
 import streamlit as st
 import pandas as pd
+from collections import defaultdict
 
-# 각 계절에 해당하는 달을 리스트로 정의
 def seasons_items(df):
     # 계절별 상품 판매량을 저장할 딕셔너리 생성
     seasonal_product_sales = defaultdict(lambda: defaultdict(int))
@@ -21,8 +19,8 @@ def seasons_items(df):
         month = int(row.판매날짜.split('-')[1])
         
         # 각 계절에 해당하는지 확인하고, 상품 판매량을 저장
-        for season, months in seasons.items():
-            if month in months:
+        for season, month_list in seasons.items():
+            if month in month_list:
                 product = row.상품명
                 seasonal_product_sales[season][product] += 1
 
@@ -31,5 +29,9 @@ def seasons_items(df):
         st.write(f"{season} 계절에 팔린 상품")
         # 판매량 데이터를 DataFrame으로 변환하여 표로 출력
         df_season = pd.DataFrame(list(product_sales.items()), columns=['상품명', '판매량'])
+        # list(product_sales.items()), columns=['상품명', '판매량']를 데이터프레임으로 변환한다
+        
         st.table(df_season)
+
+
 
